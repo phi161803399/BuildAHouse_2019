@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BuildAHouse
 {
@@ -20,7 +16,7 @@ namespace BuildAHouse
             get
             {
                 string description = base.Description + Environment.NewLine;
-                description += $"Decoration: {decoration}";
+                description += $"Decoration: {decoration}.";
                 return description;
             }
         }

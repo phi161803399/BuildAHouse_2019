@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BuildAHouse
+﻿namespace BuildAHouse
 {
     class OutsideWithDoor: Outside, IHasExteriorDoor
     {
@@ -17,6 +11,14 @@ namespace BuildAHouse
             base(name, hot)
         {
             DoorDescription = doorDescription;
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return base.Description + "You see " + DoorDescription;
+            }
         }
     }
 }

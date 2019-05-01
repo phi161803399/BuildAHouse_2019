@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BuildAHouse
 {
-    abstract class Location
+    public abstract class Location
     {
         public Location(string name)
         {
@@ -31,6 +31,11 @@ namespace BuildAHouse
                 description += ".";
                 return description;
             }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

@@ -14,5 +14,18 @@ namespace BuildAHouse
         {
             this.hot = hot;
         }
+
+        public override string Description
+        {
+            get
+            {
+                string description = base.Description + Environment.NewLine;
+                if (hot)
+                {
+                    description += $"It's very hot here." + Environment.NewLine;
+                }
+                return description;
+            }
+        }
     }
 }

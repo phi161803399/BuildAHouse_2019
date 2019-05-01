@@ -12,6 +12,8 @@ namespace BuildAHouse
 {
     public partial class Form1 : Form
     {
+        private Location currentLocation;
+
         RoomWithDoor livingRoom;
         RoomWithDoor kitchen;
         Room diningRoom;
@@ -22,6 +24,8 @@ namespace BuildAHouse
         {
             InitializeComponent();
             CreateLocations();
+            // starting position
+            MoveToANewLocation(frontYard);
         }
 
         public void CreateLocations()
@@ -44,6 +48,31 @@ namespace BuildAHouse
             backYard.DoorLocation = kitchen;
             livingRoom.DoorLocation = frontYard;
             frontYard.DoorLocation = livingRoom;
+        }
+
+        public void MoveToANewLocation(Location goToLocation)
+        {
+            currentLocation = goToLocation;
+            exits.Items.Clear();
+            for (int i = 0; i < currentLocation.Exits.Length; i++)
+            {
+                exits.Items.Add(currentLocation.Exits[i]);
+            }
+            exits.SelectedIndex = 0;
+
+            description.Text = currentLocation.Description;
+
+            goThroughTheDoor.Visible = (currentLocation is IHasExteriorDoor) ? true : false;
+        }
+
+        private void goHere_Click(object sender, EventArgs e)
+        {
+            MoveToANewLocation(exits.SelectedItem as Location);
+        }
+
+        private void goThroughTheDoor_Click(object sender, EventArgs e)
+        {
+            MoveToANewLocation((currentLocation as IHasExteriorDoor).DoorLocation);
         }
     }
 }

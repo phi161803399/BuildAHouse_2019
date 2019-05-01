@@ -15,7 +15,7 @@ namespace BuildAHouse
         }
         public string Name { get; }
         public Location[] Exits;
-        public string Description
+        public virtual string Description
         {
             get
             {

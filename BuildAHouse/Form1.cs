@@ -15,8 +15,8 @@ namespace BuildAHouse
         RoomWithDoor livingRoom;
         RoomWithDoor kitchen;
         Room diningRoom;
-        OutsideWithDoor backyard;
-        OutsideWithDoor frontyard;
+        OutsideWithDoor backYard;
+        OutsideWithDoor frontYard;
         Outside garden;
         public Form1()
         {
@@ -27,23 +27,23 @@ namespace BuildAHouse
         public void CreateLocations()
         {
             livingRoom = new RoomWithDoor("Living Room", "an antique carpet", "an oak door with a brass knob");
-            kitchen = new RoomWithDoor("Kitchen");
-            diningRoom = new Room("Dining Room", "dining room decoration");
-            backyard = new OutsideWithDoor("Backyard", false);
-            frontyard = new OutsideWithDoor("Frontyard", false);
+            kitchen = new RoomWithDoor("Kitchen", "stainless steel appliances", "a screen door");
+            diningRoom = new Room("Dining Room", "crystal chandelier");
+            backYard = new OutsideWithDoor("Back Yard", true, "a screen door");
+            frontYard = new OutsideWithDoor("Front Yard", false, "an oak door with a brass knob");
             garden = new Outside("Garden", true);
 
             livingRoom.Exits = new Location[] { diningRoom };
             kitchen.Exits = new Location[] { livingRoom };
             diningRoom.Exits = new Location[] { kitchen, livingRoom };
-            frontyard.Exits = new Location[] { garden, backyard };
-            backyard.Exits = new Location[] { garden, frontyard };
-            garden.Exits = new Location[] { backyard, frontyard };
+            frontYard.Exits = new Location[] { garden, backYard };
+            backYard.Exits = new Location[] { garden, frontYard };
+            garden.Exits = new Location[] { backYard, frontYard };
 
-            kitchen.DoorLocation = backyard;
-            backyard.DoorLocation = kitchen;
-            livingRoom.DoorLocation = frontyard;
-            frontyard.DoorLocation = livingRoom;
+            kitchen.DoorLocation = backYard;
+            backYard.DoorLocation = kitchen;
+            livingRoom.DoorLocation = frontYard;
+            frontYard.DoorLocation = livingRoom;
         }
     }
 }

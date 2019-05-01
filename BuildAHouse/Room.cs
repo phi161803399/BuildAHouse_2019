@@ -14,5 +14,15 @@ namespace BuildAHouse
         {
             this.decoration = decoration;
         }
+
+        public override string Description
+        {
+            get
+            {
+                string description = base.Description + Environment.NewLine;
+                description += $"Decoration: {decoration}";
+                return description;
+            }
+        }
     }
 }
